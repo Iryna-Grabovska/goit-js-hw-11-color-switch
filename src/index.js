@@ -12,29 +12,26 @@ const refs = {
   stopSwitchColor: document.querySelector('[data-action="stop"]'),
 
 };
-//let timerId = null;
-//let isActive = false;
-// const randomIntegerFromInterval = (min, max) => {
-//   return Math.floor(Math.random() * (max - min + 1) + min);
-// };
+let timerId = null;
+let isActive = false;
+const randomIntegerFromInterval = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+};
 refs.startSwitchColor.addEventListener('click', () => {
-  
-
-  // if (isActive) {
-  //   return;
-  // };
-    
+   if (isActive) {
+    return;
+  };
+  isActive = true;
   timerId = setInterval(() => {
-    const randomColor = colors[Math.floor(Math.random )* colors.length];
+    const randomColor = colors[randomIntegerFromInterval(0, colors.length - 1)];
        document.body.style.backgroundColor = randomColor;
 
    }, 1000);
-  // //randomIntegerFromInterval();
 });
 
 refs.stopSwitchColor.addEventListener('click', () => {
   clearInterval(timerId);
-  //isActive = false;
+  isActive = false;
 });
 
 
